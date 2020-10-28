@@ -191,6 +191,9 @@ function jackEnPoy() {
     } else {
         console.log("Something wrong might have happened. Nobody won?!");
     }
+
+    // Tell the player how to play the game again (via the console)
+    console.log("Good game! Type 'jackEnPoy()' in the console to play some more!");
 }
 
 jackEnPoy();

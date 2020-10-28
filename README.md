@@ -1,1 +1,2 @@
 # rock-paper-scissors
+This is a project from the [Odin Project](https://theodinproject.com/courses/foundations/lessons/rock-paper-scissors). It has my own twists. It does not use strings to determine the round results but instead uses a pre-defined array of results, via match codes (0 = loss, 1 = win, 2 = tie) and choice numbers (1 = rock, 2 = paper, 3 = scissors). **This game is played via the console**. If you are using Google Chrome, use *Ctrl+Shift+I* to access the console.
