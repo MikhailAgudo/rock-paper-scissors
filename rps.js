@@ -86,7 +86,12 @@ function convertToString(choice) {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function determineMatchCode(playerSelection, computerSelection) {
+    // The match code is 0 (loss), 1 (win), 2 (tie).
+    // This is used in the playRound() function
+    // and in the jackEnPoy() function. In the latter,
+    // it's useful in determining who gets points.
+
     // First, convert playerSelection into a number
     // if it's a string.
     if (typeof playerSelection === "string") {
@@ -94,7 +99,13 @@ function playRound(playerSelection, computerSelection) {
     }
 
     // Then, determine the winner.
-    let roundResult = determineWinner(playerSelection, 
+    return determineWinner(playerSelection, computerSelection);
+
+}
+
+function playRound(playerSelection, computerSelection) {
+    // First, determine the match code.
+    let roundResult = determineMatchCode(playerSelection,
         computerSelection);
     
     // To be able to use the same variables, for the 
@@ -105,11 +116,37 @@ function playRound(playerSelection, computerSelection) {
     // Finally, determine what the returned string is.
     switch(roundResult) {
         case 0:
-            return "You lose! " + computerSelection + " beats " + playerSelection + "!";
+            return "You lose! " + computerSelection + " beats " +
+                playerSelection + "!";
         case 1:
-            return "You win! " + playerSelection + " beats " + computerSelection + "!";
+            return "You win! " + playerSelection + " beats " +
+                computerSelection + "!";
         case 2:
-            return "Tie! " + playerSelection + " ties with " + computerSelection + "!";
+            return ("Tie! " + playerSelection + " ties with " +
+                computerSelection + "!");
+    }
+}
+
+function jackEnPoy() { 
+    // Trivia: "jack and poy" is the name 
+    // of rock paper scissors in the Philippines,
+    // which probably game Japan's "janken".
+
+    // This is the main game loop. The player is asked
+    // an input via prompt(), over the course of five rounds.
+    let playerPoints = 0;
+    let computerPoints = 0;
+    const rounds = 5;
+
+    for(let i = 0; i < rounds; i++) {
+        const playerSelection = prompt("Welcome to Rock Paper Scissors!" + 
+            " This is round " + (i + 1) + " of 5!" + 
+            " You have " + playerPoints + " points, against " +
+            " the foe's " + computerPoints + "!" +
+            " Type 'rock', 'paper', or 'scissors' to play!");
+        const computerSelection = computerPlay();
+
+        let roundResult = determineWinner
     }
 }
 
