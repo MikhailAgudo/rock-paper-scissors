@@ -149,10 +149,23 @@ function jackEnPoy() {
             " Type 'rock', 'paper', or 'scissors' to play!");
         const computerSelection = computerPlay();
 
-        let roundResult = determineWinner
+        let roundResult = determineMatchCode(playerSelection,
+            computerSelection);
+        switch(roundResult) {
+            case 0:
+                computerPoints++;
+                break;
+            case 1:
+                playerPoints++;
+                break;
+            case 2:
+                break;
+        }
+        console.log(playRound(playerSelection, computerSelection));
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+jackEnPoy();
+//const playerSelection = "rock";
+//const computerSelection = computerPlay();
+//console.log(playRound(playerSelection, computerSelection));
