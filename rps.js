@@ -137,11 +137,18 @@ function jackEnPoy() {
 
     // This is the main game loop. The player is asked
     // an input via prompt(), over the course of five rounds.
+    // Initialize the variables for points, and the amount of
+    // rounds.
     let playerPoints = 0;
     let computerPoints = 0;
     const rounds = 5;
 
-    for(let i = 0; i < rounds; i++) {
+    // Then iterate over the rounds.
+    for(let i = 0; i < rounds; i += 0) {
+        // This prompt gives the player information about
+        // how the match is going so far and what kind of
+        // things they can input to play the game.
+        // Then, determine the AI's input.
         const playerSelection = prompt("Welcome to Rock Paper Scissors!" + 
             " This is round " + (i + 1) + " of 5!" + 
             " You have " + playerPoints + " points, against " +
@@ -149,23 +156,41 @@ function jackEnPoy() {
             " Type 'rock', 'paper', or 'scissors' to play!");
         const computerSelection = computerPlay();
 
+        // Get the match code to help count the points.
         let roundResult = determineMatchCode(playerSelection,
             computerSelection);
+        
+        // Only increment i when someone gains a point.
         switch(roundResult) {
             case 0:
                 computerPoints++;
+                i++;
                 break;
             case 1:
                 playerPoints++;
+                i++;
                 break;
             case 2:
                 break;
         }
+
+        // Then, use playRound() to print the round results
+        // in the console. Not an optimized way of doing so,
+        // but it's a natural progression based on the instructions
+        // from https://theodinproject.com/courses/foundations/lessons/rock-paper-scissors
         console.log(playRound(playerSelection, computerSelection));
+    }
+
+    // Then, tell the player using the console, who won.
+    if (playerPoints > computerPoints) {
+        console.log("You won!" + "You got " + playerPoints +
+            " over the opponent's " + computerPoints + "!");
+    } else if (computerPoints > playerPoints) {
+        console.log("You lose!" + "You got " + playerPoints +
+            " against the opponent's " + computerPoints + "!");
+    } else {
+        console.log("Something wrong might have happened. Nobody won?!");
     }
 }
 
 jackEnPoy();
-//const playerSelection = "rock";
-//const computerSelection = computerPlay();
-//console.log(playRound(playerSelection, computerSelection));
