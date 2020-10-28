@@ -110,7 +110,10 @@ function playRound(playerSelection, computerSelection) {
     
     // To be able to use the same variables, for the 
     // returning string, convert/reconvert into string.
-    playerSelection = convertToString(playerSelection);
+    // For the player, only do so if it's a number.
+    if (typeof playerSelection === "number") {
+        playerSelection = convertToString(playerSelection);
+    }
     computerSelection = convertToString(computerSelection);
     
     // Finally, determine what the returned string is.
