@@ -72,6 +72,20 @@ function convertToNumber(choice) {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function convertToString(choice) {
+    // The opposite of convertToNumber().
+    switch(choice) {
+        case 1:
+            return "ROCK";
+        case 2:
+            return "PAPER";
+        case 3:
+            return "SCISSORS";
+        default:
+            return;
+    }
+}
 
+function playRound(playerSelection, computerSelection) {
+    
 }
