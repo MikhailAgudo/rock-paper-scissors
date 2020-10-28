@@ -87,5 +87,32 @@ function convertToString(choice) {
 }
 
 function playRound(playerSelection, computerSelection) {
+    // First, convert playerSelection into a number
+    // if it's a string.
+    if (typeof playerSelection === "string") {
+        playerSelection = convertToNumber(playerSelection);
+    }
+
+    // Then, determine the winner.
+    let roundResult = determineWinner(playerSelection, 
+        computerSelection);
     
+    // To be able to use the same variables, for the 
+    // returning string, convert/reconvert into string.
+    playerSelection = convertToString(playerSelection);
+    computerSelection = convertToString(computerSelection);
+    
+    // Finally, determine what the returned string is.
+    switch(roundResult) {
+        case 0:
+            return "You lose! " + computerSelection + " beats " + playerSelection + "!";
+        case 1:
+            return "You win! " + playerSelection + " beats " + computerSelection + "!";
+        case 2:
+            return "Tie! " + playerSelection + " ties with " + computerSelection + "!";
+    }
 }
+
+const playerSelection = "rock";
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
