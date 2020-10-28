@@ -54,8 +54,22 @@ function determineWinner(player, opponent) {
 
 function convertToNumber(choice) {
     // This function converts "rock" into 1, "paper"
-    // into 2, and "scissors" into 3.
-    
+    // into 2, and "scissors" into 3. First, turn the
+    // string into upper case to it's easier to read.
+    choice = choice.toUpperCase();
+
+    // Then convert it into a number for the
+    // determineWinner function.
+    switch(choice) {
+        case "ROCK":
+            return 1;
+        case "PAPER":
+            return 2;
+        case "SCISSORS":
+            return 3;
+        default:
+            return;
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
